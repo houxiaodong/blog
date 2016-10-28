@@ -5,9 +5,9 @@
 # Site
 title: Hexo
 subtitle:
-description:
-author: John Doe
-language:
+description: description
+author: jack_hou
+language: zh-Hans
 timezone:
 
 # URL
