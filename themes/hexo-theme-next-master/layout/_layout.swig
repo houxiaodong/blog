@@ -72,6 +72,6 @@
   {% include '_scripts/third-party/lean-analytics.swig' %}
   {% include '_scripts/baidu-push.swig' %}
   {% include '_scripts/third-party/schedule.swig' %}
-
+<script type="text/javascript" src="/js/src/particle.js"></script>
 </body>
 </html>

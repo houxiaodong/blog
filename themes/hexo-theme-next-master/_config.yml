@@ -34,7 +34,8 @@ menu:
   archives: /archives
   tags: /tags
   schedule: /schedule
-  commonweal: /404.html
+  #commonweal: /404.html
+ 
 
 
 # Enable/Disable menu icons.
@@ -52,6 +53,7 @@ menu_icons:
   tags: tags
   archives: archive
   commonweal: heartbeat
+ 
 
 
 
@@ -62,8 +64,8 @@ menu_icons:
 
 # Schemes
 #scheme: Muse
-scheme: Mist
-#scheme: Pisces
+#scheme: Mist
+scheme: Pisces
 
 
 # ---------------------------------------------------------------
@@ -123,8 +125,10 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
+social:
   #LinkLabel: Link
+  GitHub: https://github.com/houxiaodong
+  Zhihu: https://www.zhihu.com/people/xiao-dong-33-46
 
 
 # Social Links Icons
@@ -233,7 +237,7 @@ auto_excerpt:
 
 # MathJax Support
 mathjax:
-  enable: false
+  enable: true
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 
@@ -241,10 +245,10 @@ mathjax:
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: c71dd180b79bf76d31322468a85ef1a4
 
-# Duoshuo ShortName
-#duoshuo_shortname:
+#Duoshuo ShortName
+duoshuo_shortname: houxiaodong
 
 # Disqus
 #disqus_shortname:
@@ -261,8 +265,8 @@ mathjax:
 # Warning: JiaThis does not support https.
 #add_this_id:
 
-# Share
-#duoshuo_share: true
+#Share
+duoshuo_share: true
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
@@ -281,9 +285,9 @@ mathjax:
 # you can visit http://dev.duoshuo.com get duoshuo user id.
 duoshuo_info:
   ua_enable: true
-  admin_enable: false
+  admin_enable: true
   user_id: 0
-  #admin_nickname: Author
+  admin_nickname: Author
 
 
 # Facebook SDK Support.
