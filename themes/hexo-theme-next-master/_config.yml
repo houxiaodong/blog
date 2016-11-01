@@ -33,7 +33,7 @@ menu:
   about: /about
   archives: /archives
   tags: /tags
-  schedule: /schedule
+  #schedule: /schedule
   #commonweal: /404.html
  
 
@@ -49,7 +49,7 @@ menu_icons:
   home: home
   about: user
   categories: th
-  schedule: calendar
+  #schedule: calendar
   tags: tags
   archives: archive
   commonweal: heartbeat
