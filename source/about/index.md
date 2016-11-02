@@ -8,5 +8,5 @@ comments: false
 
 <!-- 只显示播放器 -->
 <div style="max-width: 350px;max-height: 150px">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=26418130&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="http://music.163.com/outchain/player?type=0&id=500280863&auto=1&height=430"></iframe>
 </div>
