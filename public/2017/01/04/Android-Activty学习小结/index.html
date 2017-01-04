@@ -1,0 +1,1151 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="activty," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jack_hou's Zone" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Android-Activty学习小结
+Activity,fragment,service,broadcast等，是我们日常开发中，使用频率非常高的几大组件。今天找个时间，将这几大组件梳理以下。
+Activity知识梳理
+Activity的生命周期
+ Created 个 Activity 的实例被启动时调用的第一个方法。一般情况下，我们都覆盖该方法作为应用程序的一个入口点，在这里做一些初始化数据、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-Activty学习小结">
+<meta property="og:url" content="http://yoursite.com/2017/01/04/Android-Activty学习小结/index.html">
+<meta property="og:site_name" content="jack_hou's Zone">
+<meta property="og:description" content="Android-Activty学习小结
+Activity,fragment,service,broadcast等，是我们日常开发中，使用频率非常高的几大组件。今天找个时间，将这几大组件梳理以下。
+Activity知识梳理
+Activity的生命周期
+ Created 个 Activity 的实例被启动时调用的第一个方法。一般情况下，我们都覆盖该方法作为应用程序的一个入口点，在这里做一些初始化数据、">
+<meta property="og:image" content="http://yoursite.com/images/Android-Activty学习小结/activitylife.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Android-Activty学习小结/activtystate.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Android-Activty学习小结/activtyzhan.jpg">
+<meta property="og:image" content="http://yoursite.com/images/Android-Activty学习小结/intent_filter.jpg">
+<meta property="og:updated_time" content="2017-01-04T10:35:22.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-Activty学习小结">
+<meta name="twitter:description" content="Android-Activty学习小结
+Activity,fragment,service,broadcast等，是我们日常开发中，使用频率非常高的几大组件。今天找个时间，将这几大组件梳理以下。
+Activity知识梳理
+Activity的生命周期
+ Created 个 Activity 的实例被启动时调用的第一个方法。一般情况下，我们都覆盖该方法作为应用程序的一个入口点，在这里做一些初始化数据、">
+<meta name="twitter:image" content="http://yoursite.com/images/Android-Activty学习小结/activitylife.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/04/Android-Activty学习小结/"/>
+
+
+  <title> Android-Activty学习小结 | jack_hou's Zone </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c71dd180b79bf76d31322468a85ef1a4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">jack_hou's Zone</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">如果今天是我人生中的最后一天，那么我想去做什么？</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android-Activty学习小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-04T16:27:43+08:00" content="2017-01-04">
+              2017-01-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/04/Android-Activty学习小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/Android-Activty学习小结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Android-Activty学习小结"><a href="#Android-Activty学习小结" class="headerlink" title="Android-Activty学习小结"></a>Android-Activty学习小结</h1><hr>
+<p>Activity,fragment,service,broadcast等，是我们日常开发中，使用频率非常高的几大组件。今天找个时间，将这几大组件梳理以下。</p>
+<h1 id="Activity知识梳理"><a href="#Activity知识梳理" class="headerlink" title="Activity知识梳理"></a>Activity知识梳理</h1><hr>
+<h2 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h2><blockquote>
+<p> Created 个 Activity 的实例被启动时调用的第一个方法。一般情况下，我们都覆盖该方法作为应用程序的一个入口点，在这里做一些初始化数据、设置用户界面等工作。大多数情况下，我们都要在这里从 xml 中加载设计好的用户界面。例如：  </p>
+</blockquote>
+<pre><code>setContentView(R.layout.main);
+</code></pre><p>当然，也可从 savedInstanceState中读我们保存到存储设备中的数据，但是需要判断 savedInstanceState是否为 null，因为 Activity 第一次启动时并没有数据被存贮在设备中：</p>
+<pre><code>if(savedInstanceState!=null){ 
+ savedInstanceState.get(&quot;Key&quot;); 
+ }
+</code></pre><blockquote>
+<p>Started 该方法在 onCreate() 方法之后被调用，或者在 Activity 从 Stop 状态转换为 Active 状态时被调用。<br>Resumed   在 Activity 从 Pause 状态转换到 Active 状态时被调用。<br>Paused   在 Activity 从 Active 状态转换到 Pause 状态时被调用。<br>Stopped    在 Activity 从 Active 状态转换到 Stop 状态时被调用。一般我们在这里保存 Activity 的状态信息。<br>Destroyed    在 Active 被结束时调用，它是被结束时调用的最后一个方法，在这里一般做些释放资源，清理内存等工作。  </p>
+</blockquote>
+<p><img src="/images/Android-Activty学习小结/activitylife.jpg" alt="">  </p>
+<pre><code>public class OurActivity extends Activity { 
+   protected void onCreate(Bundle savedInstanceState); 
+   protected void onStart(); 
+   protected void onResume(); 
+   protected void onPause(); 
+   protected void onStop(); 
+   protected void onDestroy(); 
+}
+</code></pre><p>此外，Android 还定义了一些不常用的与生命周期相关的方法可用：  </p>
+<pre><code>protected void onPostCreate(Bundle savedInstanceState); 
+protected void onRestart(); 
+protected void onPostResume();
+</code></pre><h2 id="Activity的几种状态"><a href="#Activity的几种状态" class="headerlink" title="Activity的几种状态"></a>Activity的几种状态</h2><blockquote>
+<ul>
+<li>Activity/runnig:一个新 Activity 启动入栈后，它在屏幕最前端，处于栈的最顶端，此时它处于可见并可和用户交互的激活状态。</li>
+<li>Paused:当 Activity 被另一个透明或者 Dialog 样式的 Activity 覆盖时的状态。此时它依然与窗口管理器保持连接，系统继续维护其内部状态，所以它仍然可见，但它已经失去了焦点故不可与用户交互。</li>
+<li>Stoped:当 Activity 被另外一个 Activity 覆盖、失去焦点并不可见时处于 Stoped状态。</li>
+<li>killed:Activity 被系统杀死回收或者没有被启动时处于 Killed状态。</li>
+</ul>
+</blockquote>
+<p><img src="/images/Android-Activty学习小结/activtystate.jpg" alt="">  </p>
+<p>当我们创建一个Activity的时候，只是决定了Activity的生，但是当我使用activty.finish（）的时候，实际上，和用户按下BACK键一样，告诉Activity Manager该Activity完成了相应的工作，可以被回收。随后Activy Manager 激活处于第二层的Activity并重新入栈，同时原Activity被压入栈的第二层，从Active 的状态转换为paused状态。例如：从 Activity1 中启动了 Activity2，则当前处于栈顶端的是 Activity2，第二层是 Activity1，当我们调用 Activity2.finish()方法时，Activity Manager 重新激活 Activity1 并入栈，Activity2 从 Active 状态转换 Stoped 状态，Activity1. onActivityResult(int requestCode, int resultCode, Intent data)方法被执行，Activity2 返回的数据通过 data参数返回给 Activity1。</p>
+<h2 id="Activty-栈"><a href="#Activty-栈" class="headerlink" title="Activty 栈"></a>Activty 栈</h2><p>Android 是通过一种 Activity 栈的方式来管理 Activity 的，一个 Activity 的实例的状态决定它在栈中的位置。处于前台的 Activity 总是在栈的顶端，当前台的 Activity 因为异常或其它原因被销毁时，处于栈第二层的 Activity 将被激活，上浮到栈顶。当新的 Activity 启动入栈时，原 Activity 会被压入到栈的第二层。一个 Activity 在栈中的位置变化反映了它在不同状态间的转换。Activity 的状态与它在栈中的位置关系如下图所示：  </p>
+<p><img src="/images/Android-Activty学习小结/activtyzhan.jpg" alt="">  </p>
+<p>如上所示，除了最顶层即处在 Active 状态的 Activity 外，其它的 Activity 都有可能在系统内存不足时被回收，一个 Activity 的实例越是处在栈的底层，它被系统回收的可能性越大。系统负责管理栈中 Activity 的实例，它根据 Activity 所处的状态来改变其在栈中的位置。</p>
+<h2 id="Activity-之间通信"><a href="#Activity-之间通信" class="headerlink" title="Activity 之间通信"></a>Activity 之间通信</h2><h3 id="使用-Intent-通信"><a href="#使用-Intent-通信" class="headerlink" title="使用 Intent 通信"></a>使用 Intent 通信</h3><p>在 Android 中，不同的 Activity 实例可能运行在一个进程中，也可能运行在不同的进程中。因此我们需要一种特别的机制帮助我们在 Activity 之间传递消息。Android 中通过 Intent 对象来表示一条消息，一个 Intent 对象不仅包含有这个消息的目的地，还可以包含消息的内容，这好比一封 Email，其中不仅应该包含收件地址，还可以包含具体的内容。对于一个 Intent 对象，消息“目的地”是必须的，而内容则是可选项。<br>在上面的实例中通过 Activity. startActivity(intent)启动另外一个 Activity 的时候，我们在 Intent 类的构造器中指定了“收件人地址”。<br>如果我们想要给“收件人”Activity 说点什么的话，那么可以通过下面这封“e-mail”来将我们消息传递出去：</p>
+<pre><code>Intent intent =new Intent(CurrentActivity.this,OtherActivity.class);
+// 创建一个带“收件人地址”的 email 
+Bundle bundle =new Bundle();// 创建 email 内容
+bundle.putBoolean(&quot;boolean_key&quot;, true);// 编写内容
+bundle.putString(&quot;string_key&quot;, &quot;string_value&quot;); 
+intent.putExtra(&quot;key&quot;, bundle);// 封装 email 
+startActivity(intent);// 启动新的 Activity
+</code></pre><p>那么“收件人”该如何收信呢？在 OtherActivity类的 onCreate()或者其它任何地方使用下面的代码就可以打开这封“e-mail”阅读其中的信息：  </p>
+<pre><code>Intent intent =getIntent();// 收取 email 
+Bundle bundle =intent.getBundleExtra(&quot;key&quot;);// 打开 email 
+bundle.getBoolean(&quot;boolean_key&quot;);// 读取内容
+bundle.getString(&quot;string_key&quot;);
+</code></pre><p>上面我们通过 bundle对象来传递信息，bundle维护了一个 HashMap<string, object="">对象，将我们的数据存贮在这个 HashMap 中来进行传递。但是像上面这样的代码稍显复杂，因为 Intent 内部为我们准备好了一个 bundle，所以我们也可以使用这种更为简便的方法：  </string,></p>
+<pre><code>Intent intent =new Intent(EX06.this,OtherActivity.class); 
+intent.putExtra(&quot;boolean_key&quot;, true); 
+intent.putExtra(&quot;string_key&quot;, &quot;string_value&quot;); 
+startActivity(intent);
+</code></pre><p>接收：  </p>
+<pre><code>Intent intent=getIntent(); 
+intent.getBooleanExtra(&quot;boolean_key&quot;,false); 
+intent.getStringExtra(&quot;string_key&quot;);
+</code></pre><h3 id="使用-SharedPreferences"><a href="#使用-SharedPreferences" class="headerlink" title="使用 SharedPreferences"></a>使用 SharedPreferences</h3><p>SharedPreferences 使用 xml 格式为 Android 应用提供一种永久的数据存贮方式。对于一个 Android 应用，它存贮在文件系统的 /data/ data/your_app_package_name/shared_prefs/目录下，可以被处在同一个应用中的所有 Activity 访问。Android 提供了相关的 API 来处理这些数据而不需要程序员直接操作这些文件或者考虑数据同步问题。  </p>
+<pre><code>// 写入 SharedPreferences 
+SharedPreferences preferences = getSharedPreferences(&quot;name&quot;, MODE_PRIVATE); 
+Editor editor = preferences.edit(); 
+editor.putBoolean(&quot;boolean_key&quot;, true); 
+editor.putString(&quot;string_key&quot;, &quot;string_value&quot;); 
+editor.commit(); 
+
+// 读取 SharedPreferences 
+SharedPreferences preferences = getSharedPreferences(&quot;name&quot;, MODE_PRIVATE); 
+preferences.getBoolean(&quot;boolean_key&quot;, false); 
+preferences.getString(&quot;string_key&quot;, &quot;default_value&quot;);
+</code></pre><h3 id="其它方式"><a href="#其它方式" class="headerlink" title="其它方式"></a>其它方式</h3><p>Android 提供了包括 SharedPreferences 在内的很多种数据存贮方式，比如 SQLite，文件等，程序员可以通过这些 API 实现 Activity 之间的数据交换。如果必要，我们还可以使用 IPC 方式。</p>
+<h2 id="Activity-的-Intent-Filter"><a href="#Activity-的-Intent-Filter" class="headerlink" title="Activity 的 Intent Filter"></a>Activity 的 Intent Filter</h2><p>Intent Filter 描述了一个组件愿意接收什么样的 Intent 对象，Android 将其抽象为 android.content.IntentFilter 类。在 Android 的 AndroidManifest.xml 配置文件中可以通过 <intent-filter>节点为一个 Activity 指定其 Intent Filter，以便告诉系统该 Activity 可以响应什么类型的 Intent。<br>当程序员使用 startActivity(intent) 来启动另外一个 Activity 时，如果直接指定 intent 了对象的 Component 属性，那么 Activity Manager 将试图启动其 Component 属性指定的 Activity。否则 Android 将通过 Intent 的其它属性从安装在系统中的所有 Activity 中查找与之最匹配的一个启动，如果没有找到合适的 Activity，应用程序会得到一个系统抛出的异常。这个匹配的过程如下：  </intent-filter></p>
+<p><img src="/images/Android-Activty学习小结/intent_filter.jpg" alt=""> </p>
+<h3 id="Action-匹配"><a href="#Action-匹配" class="headerlink" title="Action 匹配"></a>Action 匹配</h3><p>Action 是一个用户定义的字符串，用于描述一个 Android 应用程序组件，一个 Intent Filter 可以包含多个 Action。在 AndroidManifest.xml 的 Activity 定义时可以在其 <intent-filter>节点指定一个 Action 列表用于标示 Activity 所能接受的“动作”，例如：  </intent-filter></p>
+<pre><code>&lt;intent-filter &gt; 
+&lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt; 
+&lt;action android:name=&quot;com.zy.myaction&quot; /&gt; 
+&lt;/intent-filter&gt;  
+</code></pre><p>如果我们在启动一个 Activity 时使用这样的 Intent 对象：  </p>
+<pre><code>Intent intent =new Intent(); 
+intent.setAction(&quot;com.zy.myaction&quot;);
+</code></pre><p>那么所有的 Action 列表中包含了“com.zy.myaction”的 Activity 都将会匹配成功。<br>Android 预定义了一系列的 Action 分别表示特定的系统动作。这些 Action 通过常量的方式定义在 android.content. Intent中，以“ACTION_”开头。我们可以在 Android 提供的文档中找到它们的详细说明。</p>
+<h3 id="URI-数据匹配"><a href="#URI-数据匹配" class="headerlink" title="URI 数据匹配"></a>URI 数据匹配</h3><p>一个 Intent 可以通过 URI 携带外部数据给目标组件。在 <intent-filter>节点中，通过 <data>节点匹配外部数据。<br>mimeType 属性指定携带外部数据的数据类型，scheme 指定协议，host、port、path 指定数据的位置、端口、和路径。如下：  </data></intent-filter></p>
+<pre><code>&lt;data android:mimeType=&quot;mimeType&quot; android:scheme=&quot;scheme&quot; 
+android:host=&quot;host&quot; android:port=&quot;port&quot; android:path=&quot;path&quot;/&gt;
+</code></pre><p>如果在 Intent Filter 中指定了这些属性，那么只有所有的属性都匹配成功时 URI 数据匹配才会成功。</p>
+<h3 id="Category-类别匹配"><a href="#Category-类别匹配" class="headerlink" title="Category 类别匹配"></a>Category 类别匹配</h3><p><intent-filter>节点中可以为组件定义一个 Category 类别列表，当 Intent 中包含这个列表的所有项目时 Category 类别匹配才会成功。</intent-filter></p>
+<h2 id="一些关于-Activity-的技巧"><a href="#一些关于-Activity-的技巧" class="headerlink" title="一些关于 Activity 的技巧"></a>一些关于 Activity 的技巧</h2><h3 id="锁定-Activity-运行时的屏幕方向"><a href="#锁定-Activity-运行时的屏幕方向" class="headerlink" title="锁定 Activity 运行时的屏幕方向"></a>锁定 Activity 运行时的屏幕方向</h3><p>Android 内置了方向感应器的支持。在 G1 中，Android 会根据 G1 所处的方向自动在竖屏和横屏间切换。但是有时我们的应用程序仅能在横屏 / 竖屏时运行，比如某些游戏，此时我们需要锁定该 Activity 运行时的屏幕方向，<activity>节点的 android:screenOrientation属性可以完成该项任务，示例代码如下：  </activity></p>
+<pre><code>&lt;activity android:name=&quot;.EX01&quot;
+android:label=&quot;@string/app_name&quot; 
+android:screenOrientation=&quot;portrait&quot;&gt;// 竖屏 , 值为 landscape 时为横屏
+…………
+&lt;/activity&gt;
+</code></pre><h3 id="全屏的-Activity"><a href="#全屏的-Activity" class="headerlink" title="全屏的 Activity"></a>全屏的 Activity</h3><p>要使一个 Activity 全屏运行，可以在其 onCreate()方法中添加如下代码实现：  </p>
+<pre><code>// 设置全屏模式
+getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+WindowManager.LayoutParams.FLAG_FULLSCREEN); 
+// 去除标题栏
+requestWindowFeature(Window.FEATURE_NO_TITLE);
+</code></pre><h3 id="在-Activity-的-Title-中加入进度条"><a href="#在-Activity-的-Title-中加入进度条" class="headerlink" title="在 Activity 的 Title 中加入进度条"></a>在 Activity 的 Title 中加入进度条</h3><p>为了更友好的用户体验，在处理一些需要花费较长时间的任务时可以使用一个进度条来提示用户“不要着急，我们正在努力的完成你交给的任务”。如下图：<br>在 Activity 的标题栏中显示进度条不失为一个好办法，下面是实现代码：  </p>
+<pre><code>// 不明确进度条
+requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS); 
+setContentView(R.layout.main); 
+setProgressBarIndeterminateVisibility(true); 
+
+// 明确进度条
+requestWindowFeature(Window.FEATURE_PROGRESS); 
+setContentView(R.layout.main); 
+setProgress(5000);
+</code></pre><p><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-android-actvt/#icomments" target="_blank" rel="external">以上转至</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/activty/" rel="tag">#activty</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/04/Android遍历两个日期之间每一天/" rel="next" title="Android遍历两个日期之间每一天">
+                <i class="fa fa-chevron-left"></i> Android遍历两个日期之间每一天
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/01/04/Android-Activty学习小结/"
+     data-title="Android-Activty学习小结"
+     data-content=""
+     data-url="http://yoursite.com/2017/01/04/Android-Activty学习小结/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/04/Android-Activty学习小结/"
+           data-title="Android-Activty学习小结" data-url="http://yoursite.com/2017/01/04/Android-Activty学习小结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="jack_hou" />
+          <p class="site-author-name" itemprop="name">jack_hou</p>
+          <p class="site-description motion-element" itemprop="description">专注Android移动端开发，以及逆向渗透。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+			 <a title="�ղص���ǩ��ż��Highһ��^_^" rel="alternate" class="mw-harlem_shake_slow wobble shake" href='javascript:(function() {
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+ 
+    function S() {
+        var e = document.createElement("audio");
+        e.setAttribute("class", l);
+        e.src = i;
+        e.loop = false;
+        e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h()
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+ 
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+})()'><i class="fa fa-music"></i> High</a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/houxiaodong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/xiao-dong-33-46" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-Activty学习小结"><span class="nav-number">1.</span> <span class="nav-text">Android-Activty学习小结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity知识梳理"><span class="nav-number">2.</span> <span class="nav-text">Activity知识梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">Activity的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的几种状态"><span class="nav-number">2.2.</span> <span class="nav-text">Activity的几种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activty-栈"><span class="nav-number">2.3.</span> <span class="nav-text">Activty 栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-之间通信"><span class="nav-number">2.4.</span> <span class="nav-text">Activity 之间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Intent-通信"><span class="nav-number">2.4.1.</span> <span class="nav-text">使用 Intent 通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-SharedPreferences"><span class="nav-number">2.4.2.</span> <span class="nav-text">使用 SharedPreferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它方式"><span class="nav-number">2.4.3.</span> <span class="nav-text">其它方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity-的-Intent-Filter"><span class="nav-number">2.5.</span> <span class="nav-text">Activity 的 Intent Filter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Action-匹配"><span class="nav-number">2.5.1.</span> <span class="nav-text">Action 匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URI-数据匹配"><span class="nav-number">2.5.2.</span> <span class="nav-text">URI 数据匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Category-类别匹配"><span class="nav-number">2.5.3.</span> <span class="nav-text">Category 类别匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些关于-Activity-的技巧"><span class="nav-number">2.6.</span> <span class="nav-text">一些关于 Activity 的技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#锁定-Activity-运行时的屏幕方向"><span class="nav-number">2.6.1.</span> <span class="nav-text">锁定 Activity 运行时的屏幕方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全屏的-Activity"><span class="nav-number">2.6.2.</span> <span class="nav-text">全屏的 Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-Activity-的-Title-中加入进度条"><span class="nav-number">2.6.3.</span> <span class="nav-text">在 Activity 的 Title 中加入进度条</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jack_hou</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"houxiaodong"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = false;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title >= 0 || index_content >= 0 ){
+                                isMatch = true;
+								if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            } 
+							
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+
+  
+
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</body>
+</html>
